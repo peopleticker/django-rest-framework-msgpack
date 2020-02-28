@@ -1,7 +1,6 @@
 import decimal
 import msgpack
 from dateutil.parser import parse
-from django.utils.six import text_type
 
 
 from rest_framework.parsers import BaseParser
@@ -43,4 +42,4 @@ class MessagePackParser(BaseParser):
                                 encoding="utf-8",
                                 object_hook=MessagePackDecoder().decode)
         except Exception as exc:
-            raise ParseError('MessagePack parse error - %s' % text_type(exc))
+            raise ParseError('MessagePack parse error - %s' % str(exc))
